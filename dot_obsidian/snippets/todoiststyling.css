@@ -1,0 +1,103 @@
+.todoist-group-title {
+  font-weight: 580 !important;
+  font-size: 1em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: "Geologica" !important;
+  line-height: 1.15 !important;
+}
+
+.todoist-query-header .todoist-query-title {
+  font-size: 1.6em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: "Geologica" !important;
+  line-height: 1.15 !important;
+}
+
+.todoist-no-tasks {
+  font-family: "Geologica" !important;
+  --todoist-callout-color: rgba(255, 90, 90, 0.15) !important;
+  border-left: 4px solid rgba(255, 90, 90, 0.6);
+}
+
+.todoist-callout .callout-header .obsidian-icon {
+  display: none;
+}
+
+.todoist-task-container {
+  font-family: "Geologica" !important;
+  font-weight: 300 !important;
+}
+
+.todoist-task-container:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.todoist-task-container:first-child {
+  border-top-width: 0px !important;
+}
+
+.todoist-group-title.collapsed {
+  border-bottom-width: 0px !important;
+}
+
+.todoist-task-container {
+  border-bottom-width: 0px !important;
+}
+
+.block-language-todoist {
+  padding: 18px 20px !important; /* was effectively smaller before */
+}
+
+/* 2) Remove the plugin's big top margin inside the card */
+.block-language-todoist .todoist-tasks-list {
+  margin-top: 0.75em !important;
+}
+
+/* Nested task lists indent/spacing */
+.block-language-todoist .todoist-tasks-list .todoist-tasks-list {
+  margin-top: 0.25em !important;
+  margin-left: 1.25em !important; /* was 2em, often feels huge */
+}
+
+/* 3) Task row spacing (this is the main "padding looks wrong" fix) */
+.block-language-todoist .todoist-task-container {
+  padding: 0.45em 0.25em !important; /* add slight horizontal padding */
+  border-radius: 10px; /* makes your hover look intentional */
+}
+
+/* Keep your hover, but make it feel aligned with the new padding */
+.block-language-todoist .todoist-task-container:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Title spacing: stop headers from eating vertical space */
+.block-language-todoist .todoist-query-header {
+  margin-bottom: 0.75em !important;
+  color: var(--text-muted);
+}
+
+.block-language-todoist .todoist-group-title {
+  margin: 0.9em 0 0.35em 0 !important;
+  color: var(--text-muted);
+}
+
+/* Optional: if the first group sits too low */
+.block-language-todoist .todoist-group:first-child .todoist-group-title {
+  margin-top: 0.25em !important;
+}
+
+.block-language-todoist {
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0.5px 1px #ffffff13,
+    0 0 0 1px #0000000d,
+    0 0.3px 0.4px #00000005,
+    0 0.9px 1.5px #0000000b,
+    0 3.5px 6px #00000017;
+
+  /* optional: keeps the shadow clean at the rounded corners */
+
+  overflow: hidden;
+}

@@ -1,0 +1,40 @@
+[user]
+	name = rfm0905
+	email = rfm0905@gmail.com
+	signingkey = 270EDF931B89E6DC
+[core]
+	pager = delta
+	editor = hx
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+[delta]
+	line-numbers = true
+	navigate = true
+	side-by-side = false
+	syntax-theme = Nord
+	hyperlinks = true
+	colorMoved = default	
+[init]
+	defaultBranch = main
+[alias]
+	unstage = reset HEAD --\n
+
+[color]
+	status = auto
+
+[merge]
+    conflictStyle = zdiff3
+
+[pager]
+	blame = delta
+	branch = delta
+	stash = delta
+	grep = delta
+	notes = delta
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
+	format = openpgp

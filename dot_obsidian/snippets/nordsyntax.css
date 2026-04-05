@@ -1,0 +1,14 @@
+body {
+  --code-background: #2e3440;
+  --code-normal: #d8dee9;
+  --code-comment: #616e88;
+  --code-function: #88c0d0;
+  --code-important: #d08770;
+  --code-keyword: #81a1c1;
+  --code-operator: #81a1c1;
+  --code-property: #8fbcbb;
+  --code-punctuation: #eceff4;
+  --code-string: #a3be8c;
+  --code-tag: #81a1c1;
+  --code-value: #b48ead;
+}

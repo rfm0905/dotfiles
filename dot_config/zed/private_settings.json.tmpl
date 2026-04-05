@@ -1,0 +1,415 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "bottom_dock_layout": "full",
+  "completions": {
+    "lsp_insert_mode": "replace",
+  },
+  "buffer_line_height": "comfortable",
+  "rounded_selection": true,
+  "minimap": {
+    "thumb_border": "left_open",
+    "thumb": "always",
+    "show": "never",
+  },
+  "agent_buffer_font_size": 15.0,
+  "agent_ui_font_size": 17.0,
+  "ui_font_size": 17.0,
+  "buffer_font_size": 15.0,
+  "allow_rewrap": "anywhere",
+  "show_wrap_guides": true,
+  "image_viewer": {
+    "unit": "decimal",
+  },
+  "vim": {
+    "use_smartcase_find": true,
+  },
+  "lsp_document_colors": "background",
+  "disable_ai": false,
+  "which_key": {
+    "delay_ms": 0,
+    "enabled": true,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "vim_mode": false,
+  "helix_mode": true,
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "web_search": {
+          "default": "confirm",
+        },
+      },
+    },
+    "show_turn_stats": true,
+    "enable_feedback": false,
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-opus-4.6",
+    },
+    "play_sound_when_agent_done": true,
+    "model_parameters": [],
+  },
+  "audio": {
+    "experimental.auto_microphone_volume": true,
+    "experimental.rodio_audio": true,
+  },
+  "calls": {
+    "mute_on_join": true,
+  },
+  "git": {
+    "inline_blame": {
+      "show_commit_summary": true,
+    },
+  },
+  "terminal": {
+    "show_count_badge": false,
+    "font_size": 14.0,
+    "font_family": "Gintronic",
+    "dock": "bottom",
+    "scrollbar": {
+      "show": "never",
+    },
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+    "option_as_meta": true,
+  },
+  "debugger": {
+    "stepping_granularity": "statement",
+  },
+  "git_panel": {
+    "tree_view": true,
+    "collapse_untracked_diff": true,
+  },
+  "close_on_file_delete": false,
+  "search_wrap": true,
+  "use_smartcase_search": true,
+  "file_finder": {
+    "skip_focus_for_active_in_search": true,
+  },
+  "seed_search_query_from_cursor": "never",
+  "diagnostics": {
+    "inline": {
+      "min_column": 0,
+      "enabled": true,
+    },
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "background_coloring": "disabled",
+  },
+  "journal": {
+    "path": "~/dev",
+  },
+  "context_servers": {
+    "mcp-server-github": {
+      "enabled": true,
+      "settings": {
+        "github_personal_access_token": "{{- .github_token -}}",
+      },
+    },
+  },
+  "languages": {
+    "Markdown-Inline": {
+      "show_completions_on_input": false,
+    },
+    "Markdown": {
+      "show_completions_on_input": false,
+    },
+    "R": {
+      "language_servers": ["air", "r_language_server", "..."],
+      "use_on_type_format": false,
+    },
+    "Typst": {
+      "language_servers": ["tinymist"],
+    },
+    "Lua": {
+      "tab_size": 2,
+    },
+    "LaTeX": {
+      "hard_tabs": false,
+      "tab_size": 2,
+    },
+    "HTML": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "CSS": {
+      "prettier": {
+        "allowed": true,
+      },
+      "tab_size": 2,
+    },
+    "JavaScript": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "TypeScript": {
+      "inlay_hints": {
+        "show_type_hints": true,
+      },
+      "tab_size": 2,
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "TSX": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "JSON": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "JSONC": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "YAML": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "GraphQL": {
+      "prettier": {
+        "allowed": true,
+      },
+    },
+    "C": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["--assume-filename", "{buffer_path}"],
+        },
+      },
+    },
+    "C++": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "clang-format",
+          "arguments": ["--assume-filename", "{buffer_path}"],
+        },
+      },
+    },
+
+    "Rust": {
+      "inlay_hints": {
+        "show_parameter_hints": true,
+      },
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+
+    "Haskell": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "fourmolu",
+          "arguments": ["--stdin-input-file", "{buffer_path}"],
+        },
+      },
+    },
+
+    "OCaml": {
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "ocamlformat",
+          "arguments": ["--name", "{buffer_path}", "-"],
+        },
+      },
+    },
+
+    "Lean 4": {
+      "format_on_save": "on",
+      "formatter": "language_server",
+    },
+
+    "Python": {
+      "language_servers": ["ty", "!basedpyright", "..."],
+      "format_on_save": "on",
+      "formatter": {
+        "external": {
+          "command": "ruff",
+          "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"],
+        },
+      },
+    },
+
+    "TOML": {
+      "format_on_save": "off",
+    },
+  },
+  "file_types": {
+    "TSX": ["*.jsx", "*.tsx"],
+    "OCaml": ["*.ml", "*.mli"],
+    "Scala": ["*.sc", "*.scala"],
+    "JSONC": ["*.json", "*.jsonc"],
+    "Markdown": ["qmd", "rmd", "md"],
+  },
+  "buffer_font_family": "Consolas",
+  "buffer_font_fallbacks": ["Symbols Nerd Font"],
+  "ui_font_family": "IBM Plex Sans",
+  "colorize_brackets": true,
+  "icon_theme": "Seti Icon Theme",
+  "project_panel": {
+    "git_status_indicator": false,
+    "diagnostic_badges": true,
+    "sort_mode": "directories_first",
+    "hide_root": true,
+  },
+  "buffer_font_features": {
+    "calt": false,
+  },
+  "format_on_save": "on",
+  "use_system_window_tabs": false,
+  "preview_tabs": {
+    "enable_preview_multibuffer_from_code_navigation": true,
+    "enable_preview_file_from_code_navigation": true,
+    "enable_preview_from_multibuffer": true,
+    "enable_preview_from_project_panel": true,
+    "enabled": true,
+  },
+  "tabs": {
+    "activate_on_close": "neighbour",
+    "show_close_button": "hover",
+    "show_diagnostics": "all",
+    "file_icons": true,
+    "git_status": true,
+  },
+  "title_bar": {
+    "show_menus": true,
+    "show_branch_icon": true,
+  },
+  "prettier": {
+    "allowed": false,
+  },
+  "inlay_hints": {
+    "show_parameter_hints": true,
+    "show_type_hints": true,
+    "show_value_hints": true,
+    "show_background": false,
+    "enabled": true,
+  },
+  "hover_popover_delay": 100,
+  "autoscroll_on_clicks": true,
+  "soft_wrap": "bounded",
+  "preferred_line_length": 120,
+  "toolbar": {
+    "code_actions": true,
+  },
+  "show_signature_help_after_edits": false,
+  "auto_signature_help": false,
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "autosave": "on_focus_change",
+  "show_edit_predictions": false,
+  "edit_predictions": {
+    "provider": "copilot",
+    "copilot": {
+      "enable_next_edit_suggestions": false,
+    },
+    "mode": "subtle",
+  },
+  "semantic_tokens": "combined",
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": { "command": "clippy" },
+        "inlayHints": {
+          "closingBraceHints": { "enable": false },
+          // "lifetimeElisionHints": {
+          //   "enable": "skip_trivial",
+          //   "useParameterNames": true,
+          // },
+          // "expressionAdjustmentHints": { "enable": "always" },
+          "typeHints": {
+            "hideClosureParameter": true,
+          },
+          "closureStyle": "rust_analyzer",
+        },
+      },
+    },
+    "metals": {
+      "initialization_options": {
+        "isHttpEnabled": true,
+      },
+    },
+    "basedpyright": {
+      "settings": {
+        "basedpyright.analysis": {
+          "typeCheckingMode": "standard",
+          "diagnosticMode": "openFilesOnly",
+
+          "reportUnknownMemberType": "none",
+          "reportUnknownVariableType": "none",
+          "reportUnknownArgumentType": "none",
+          "reportUnknownParameterType": "none",
+        },
+      },
+    },
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "latexindent": { "modifyLineBreaks": true },
+          "build": { "executable": "xelatex", "onSave": true },
+        },
+      },
+    },
+    "ltex": {
+      "settings": {
+        "ltex": {
+          "language": "en-US",
+          "completionEnabled": true,
+          "statusBarItem": "true",
+          "dictionary": {
+            "en-us": ["Raed", "Mirza"],
+          },
+        },
+      },
+    },
+    "tinymist": {
+      "settings": {
+        "exportPdf": "onSave",
+        "completion": {
+          "triggerOnSnippetPlaceholders": true,
+        },
+        "lint": {
+          "enabled": true,
+          "when": "onSave",
+        },
+      },
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "theme": "Nord Dark",
+}

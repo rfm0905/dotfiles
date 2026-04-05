@@ -1,0 +1,48 @@
+/* Nordic typography + Tokyo Night Storm palette */
+
+.theme-dark {
+  /* Core backgrounds */
+  --background-primary: #24283b;
+  --background-primary-alt: #1f2335;
+  --background-secondary: #1f2335;
+  --background-secondary-alt: #1b1e2d;
+
+  /* Borders / dividers */
+  --background-modifier-border: #414868;
+  --divider-color: #414868;
+
+  /* Text */
+  --text-normal: #c0caf5;
+  --text-muted: #a9b1d6;
+  --text-faint: #565f89;
+
+  /* #bcdaf5; */
+  /* #e3e9fc */
+  /* #D1F5FF */
+  /* #d1faff */
+  /*#c0faff  */
+  --bold-color: #d1ffff80;
+
+  --interactive-accent: #7aa2f7;
+  --interactive-accent-hover: #8db0ff;
+
+  /* Links */
+  --link-color: #7aa2f7;
+  --link-color-hover: #8db0ff;
+
+  /* “Semantic” colors (checkboxes, highlights, etc.) */
+  --color-red: #f7768e;
+  --color-orange: #ff9e64;
+  --color-yellow: #e0af68;
+  --color-green: #9ece6a;
+  --color-cyan: #7dcfff;
+  --color-purple: #bb9af7;
+
+  --divider-width: 0px;
+  --tab-outline-width: 0px;
+}
+
+/* VS Code-like “brighter dark” without changing the theme palette */
+body.theme-dark {
+  filter: brightness(1.12) contrast(1.06);
+}

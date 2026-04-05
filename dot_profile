@@ -1,0 +1,33 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+[ -r "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+[ -f "/Users/raedm/.ghcup/env" ] && . "/Users/raedm/.ghcup/env"
+export GOPATH="$HOME/go"
+
+export PNPM_HOME="/Users/raedm/Library/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH="$JAVA_HOME/bin:$PATH"
+
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.elan/bin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.juliaup/bin"
+export PATH="$PATH:$HOME/.nimble/bin"
+export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
+export PATH="$PATH:$HOME/dev/ltex-ls-16.0.0/bin"
+export PATH="$PATH:$HOME/dev/als-dev-Agda-2.8.0-macos-arm64"
+export PATH="$PATH:/Users/raedm/Library/Application Support/Coursier/bin"
+
+export PATH="/Applications/MATLAB_R2025b.app/bin:$PATH" # matlab
+
+# Added by Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
+for file in ~/scripts/prof/*.zsh; do
+  source "$file"
+done

@@ -1,0 +1,114 @@
+body {
+  .markdown-rendered table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent !important;
+  }
+
+  .markdown-rendered table th,
+  .markdown-rendered table td {
+    border: none !important;
+    background: transparent !important;
+    text-align: left;
+    padding: 0.55em 0.75em;
+  }
+
+  /* 3) Header: stronger text, single bottom rule */
+  .markdown-rendered table thead th {
+    font-weight: 700;
+    background: transparent !important;
+  }
+
+  /* 4) Body rows: no background (including hover) */
+  .markdown-rendered table tbody tr,
+  .markdown-rendered table tbody tr:hover {
+    background: transparent !important;
+  }
+
+  .markdown-rendered table {
+    border-radius: 4px;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow:
+      inset 0 0 0.5px 1px #ffffff13,
+      0 0 0 1px #0000000d,
+      0 0.3px 0.4px #00000005,
+      0 0.9px 1.5px #0000000b,
+      0 3.5px 6px #00000017;
+    overflow: hidden;
+  }
+
+  .dataview {
+    border-radius: 12px;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow:
+      inset 0 0 0.5px 1px #ffffff13,
+      0 0 0 1px #0000000d,
+      0 0.3px 0.4px #00000005,
+      0 0.9px 1.5px #0000000b,
+      0 3.5px 6px #00000017;
+    overflow: hidden;
+  }
+
+  .table-view-table > tbody > tr:hover {
+    background-color: rgbaj255, 255, 255, 0.03j !important;
+  }
+
+  .table-view-table > thead > tr > th {
+    font-weight: 700;
+    font-size: larger;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+    /*border-bottom-width: 0.25px;*/
+    font-family: "Geologica" !important;
+    font-weight: 400 !important;
+    max-width: 100%;
+  }
+
+  .table-view-table > thead > tr > th * {
+    color: inherit !important;
+  }
+
+  .table-view-table > tbody > tr > td {
+    text-align: left;
+    border: none;
+    font-weight: 400;
+    max-width: 100%;
+    background-color: none !important;
+    font-family: "Geologica" !important;
+    /*--link-color: var
+--text-normal
+ !important;*/
+    --link-weight: 300 !important;
+    --link-unresolved-color: var(--text-normal) !important;
+    --link-unresolved-weight: 300 !important;
+  }
+
+  .table-view-table > thead > tr,
+  .table-view-table > tbody > tr,
+  .table-view-table > tbody > tr > td,
+  .table-view-table > thead > tr > th {
+    background-color: transparent !important;
+  }
+
+  .table-view-table > thead > tr > th {
+    border-bottom: 1px solid var(--background-modifier-border);
+  }
+
+  .dataview {
+    /*--link-color: var(--text-normal) !important;*/
+    --link-weight: 300 !important;
+    --link-unresolved-color: var(--text-normal) !important;
+    --link-unresolved-weight: 300 !important;
+    font-family: Geologica !important;
+  }
+
+  .list-view-ul {
+    background: transparent !important;
+    border-spacing: 0 !important;
+    box-shadow: none !important;
+  }
+}

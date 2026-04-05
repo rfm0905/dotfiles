@@ -1,0 +1,55 @@
+\documentclass[12pt, fleqn]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb,amsthm, amscd}
+
+\usepackage[dvipsnames,svgnames,x11names]{xcolor} % A variety of preset colors
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+
+\pagenumbering{gobble}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black
+}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+
+\newcounter{question}
+\newcommand{\question}[1]{%
+  \par
+  \vspace{1em} % space before question
+  \noindent{\large \textbf{#1}}
+  \par
+}
+\newcommand{\partq}[1]{%
+  \par
+  \vspace{.25em}
+  \noindent \textbf{#1}
+  \par
+}
+
+\begin{document}
+
+\begin{flushleft}
+Raed Mirza \\[0.5em]
+COURSE NAME \\[0.5em]
+\today \\[2em]
+\end{flushleft}
+
+\begin{center}
+{\LARGE \textbf{TITLE}}
+\end{center}
+\end{document}

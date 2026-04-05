@@ -1,0 +1,203 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "bindings": {
+      "alt-)": "editor::RotateSelectionsForward",
+    },
+  },
+  {
+    "bindings": {
+      "alt-(": "editor::RotateSelectionsBackward",
+    },
+  },
+  {
+    "context": "((vim_mode == normal || vim_mode == helix_normal) && !menu)",
+    "bindings": {
+      "ctrl-+": "vim::Increment",
+    },
+  },
+  {
+    "context": "vim_mode == helix_select",
+    "bindings": {
+      "ctrl-+": "vim::Increment",
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g ctrl-+": [
+        "vim::Increment",
+        {
+          "step": true,
+        },
+      ],
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "ctrl-+": "vim::Increment",
+    },
+  },
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "ctrl-+": "vim::Increment",
+    },
+  },
+  {
+    "context": "((vim_mode == normal || vim_mode == helix_normal) && !menu)",
+    "bindings": {
+      "ctrl--": "vim::Decrement",
+    },
+  },
+  {
+    "context": "vim_mode == helix_select",
+    "bindings": {
+      "ctrl--": "vim::Decrement",
+    },
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "g ctrl--": [
+        "vim::Decrement",
+        {
+          "step": true,
+        },
+      ],
+    },
+  },
+  {
+    "context": "((vim_mode == normal || vim_mode == helix_normal || vim_mode==insert || vim_mode==helix_select) && !menu)",
+    "bindings": {
+      "alt-y": "vim::PushRegister",
+    },
+  },
+  {
+    "context": "((vim_mode == normal || vim_mode == helix_normal || vim_mode==insert || vim_mode==helix_select) && !menu)",
+    "bindings": {
+      "alt-q": "vim::PushRegister",
+    },
+  },
+  {
+    "context": "((vim_mode == normal || vim_mode == helix_normal || vim_mode==insert) && !menu)",
+    "bindings": {
+      "ctrl-l": "vim::DeleteToEndOfLine",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-l": null,
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-t": "project_symbols::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-t": "terminal_panel::Toggle",
+    },
+  },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "ctrl-w": null,
+    },
+  },
+  {
+    "context": "FileFinder || (FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-w": "file_finder::ToggleSplitMenu",
+    },
+  },
+  {
+    "context": "((FileFinder || FileFinder > Picker > Editor) || FileFinder > Picker > menu)",
+    "bindings": {
+      "ctrl-k": "pane::SplitUp",
+    },
+  },
+  {
+    "context": "((FileFinder || FileFinder > Picker > Editor) || FileFinder > Picker > menu)",
+    "bindings": {
+      "ctrl-j": "pane::SplitDown",
+    },
+  },
+  {
+    "context": "((FileFinder || FileFinder > Picker > Editor) || FileFinder > Picker > menu)",
+    "bindings": {
+      "ctrl-h": "pane::SplitLeft",
+    },
+  },
+  {
+    "context": "((FileFinder || FileFinder > Picker > Editor) || FileFinder > Picker > menu)",
+    "bindings": {
+      "cmd-l": "pane::SplitRight",
+    },
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-w": null,
+    },
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-backspace": [
+        "editor::DeleteToPreviousWordStart",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-backspace": [
+        "editor::DeleteToPreviousWordStart",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false,
+        },
+      ],
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-w": null,
+    },
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "space": null,
+    },
+  },
+]

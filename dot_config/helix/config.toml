@@ -1,0 +1,131 @@
+theme = "nordic"
+
+[editor]
+color-modes = true
+bufferline = "always"
+end-of-line-diagnostics = "hint"
+trim-final-newlines = true 
+mouse = true
+completion-replace = true
+cursorline = true
+
+[editor.lsp]
+display-inlay-hints = true
+display-progress-messages = true
+auto-signature-help = false
+
+[editor.indent-guides]
+render = true
+character = "┆"
+skip-levels = 0
+
+[editor.auto-save]
+focus-lost = true
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "hint"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "  "
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+"A-+" = "increment"
+"A-minus" = "decrement"
+"C-+" = "increment"
+"C-minus" = "decrement"      
+
+"Cmd-a" = "select_all"
+"X" = "extend_line_above"
+"o" = "add_newline_below"
+"O" = "add_newline_above"
+
+"C-l" = "goto_line_end"
+"C-h" = "goto_line_start"
+
+"A-y" = "select_register"
+"A-q" = "select_register" # for macros
+"p" = "paste_before"
+"P" = "paste_after"
+"Cmd-c" = ":clipboard-yank"
+"Cmd-v" = ":clipboard-paste-before"
+"Cmd-z" = "undo"
+"Cmd-y" = "redo"
+"Cmd-s" = ":write!"
+"Cmd-S" = ":write-quit!"
+"C-c" = "toggle_comments"
+"C-C" = "toggle_line_comments"
+
+# Cursors
+"C-," = "copy_selection_on_next_line" # cursor below
+"C-A-," = "copy_selection_on_prev_line"
+"J" = "join_selections_space" # multiple selections at the line breaks
+"A-J" = "join_selections" # one selection at the end of the line
+"A-m" = "merge_selections"
+"A-M" = "merge_consecutive_selections"
+
+
+[keys.normal.space]
+"p" = "paste_before"
+"P" = "paste_after"
+
+[keys.select]
+"A-e" = "move_next_sub_word_end"
+"A-w" = "move_next_sub_word_start"
+"A-b" = "move_prev_sub_word_start"
+"C-l" = "goto_line_end"
+"C-h" = "goto_line_start"
+
+"C-," = "copy_selection_on_next_line"
+"C-A-," = "copy_selection_on_prev_line"
+"X" = "extend_line_above"
+
+"Cmd-z" = "undo"
+"Cmd-y" = "redo"
+
+
+[keys.normal."]"]
+"o" = "open_below"
+
+[keys.normal."["]
+"o" = "open_above"
+
+[keys.insert]
+"S-backspace" = "delete_word_backward"
+"A-backspace" = "delete_word_forward"
+"C-w" = "delete_word_backward"
+"C-W" = "delete_word_forward"
+"C-l" = "kill_to_line_end"
+"C-h" = "kill_to_line_start"
+
+"A-+" = "increment"
+"A-minus" = "decrement"
+"C-+" = "increment"
+"C-minus" = "decrement"      
+
+"C-o" = "insert_newline"
+"C-c" = "toggle_comments"
+"C-C" = "toggle_block_comments"
+
+"Cmd-z" = "undo"
+"Cmd-y" = "redo"
+
+
+"A-s" = "normal_mode"
+"C-r" = "rename_symbol"
+"A-k" = "hover"
+
+
+"A-y" = "select_register"
+"A-p" = "paste_before"
+"A-P" = "paste_after"
+"Cmd-c" = ":clipboard-yank"
+"Cmd-V" = ":clipboard-paste-before"
+
+# Cursors
+"C-," = "copy_selection_on_next_line"
+"C-A-," = "copy_selection_on_prev_line"

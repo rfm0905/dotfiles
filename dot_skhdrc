@@ -10,22 +10,32 @@ alt + shift - j : yabai -m window --swap south
 alt + shift - k : yabai -m window --swap north
 alt + shift - l : yabai -m window --swap east
 
+# warp (resplits) 
+alt + ctrl - h : yabai -m window --warp west
+alt + ctrl - j : yabai -m window --warp south
+alt + ctrl - k : yabai -m window --warp north
+alt + ctrl - l : yabai -m window --warp east
+
+# rotate
+alt + shift - o : yabai -m space --rotate 90
+alt + shift - u : yabai -m space --rotate 270
+
+# mirror
+alt + shift - x : yabai -m space --mirror x-axis
+alt + shift - y : yabai -m space --mirror y-axis
+
 # resize (-, =)
 alt + shift - m : yabai -m window --ratio rel:-0.05
 alt + shift - p : yabai -m window --ratio rel:0.05
 
-# balance
-alt + shift - b : yabai -m space --balance
+# full screen
+alt - m : yabai -m window --toggle native-fullscreen
+alt + shift - z : yabai -m window --toggle zoom-fullscreen
 
-# toggle float
+# balance, float, restart
+alt + shift - b : yabai -m space --balance
 alt + shift - f : yabai -m window --toggle float
 alt + shift - s : yabai --restart-service
-
-# toggle native fullscreen
-alt - m : yabai -m window --toggle native-fullscreen
-
-# toggle zoom fullscreen (like aerospace)
-alt + shift - z : yabai -m window --toggle zoom-fullscreen
 
 # workspaces
 alt - 1 : yabai -m space --focus 1
@@ -48,17 +58,3 @@ alt + shift - 6 : yabai -m window --space 6
 alt + shift - 7 : yabai -m window --space 7
 alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
-
-# warp (restructure layout)
-alt + ctrl - h : yabai -m window --warp west
-alt + ctrl - j : yabai -m window --warp south
-alt + ctrl - k : yabai -m window --warp north
-alt + ctrl - l : yabai -m window --warp east
-
-# rotate
-alt + shift - o : yabai -m space --rotate 90
-alt + shift - u : yabai -m space --rotate 270
-
-# mirror
-alt + shift - x : yabai -m space --mirror x-axis
-alt + shift - y : yabai -m space --mirror y-axis

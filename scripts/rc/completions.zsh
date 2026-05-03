@@ -35,7 +35,7 @@ setopt HIST_REDUCE_BLANKS
 setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_FIND_NO_DUPS
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="gpg *|getpass *|getykw *"
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="gpg*|getpass *|getykw *"
 
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

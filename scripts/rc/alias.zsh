@@ -8,8 +8,10 @@ alias ..="z .."
 alias getpass="keepassxc-cli clip ~/Passwords.kdbx"
 alias getykw="getpass ykw"
 alias getgit="getpass rfm0905"
-alias gpgd="gpg -d"
+alias gpgd="pbpaste | gpg -d"
 alias gpga="gpg --armor"
+alias getkey="gpg --armor --export"
+
 
 # utils
 zedit() {

@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
   "agent_servers": {
     "github-copilot-cli": {
       "type": "registry",
@@ -50,11 +56,13 @@
   "vim_mode": false,
   "helix_mode": true,
   "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
     "tool_permissions": {
       "tools": {
-        "web_search": {
-          "default": "confirm",
-        },
+        "search_web": {
+          "default": "confirm"
+        }
       },
     },
     "show_turn_stats": true,
@@ -64,12 +72,11 @@
       "provider": "copilot_chat",
       "model": "claude-opus-4.6",
     },
-    "play_sound_when_agent_done": true,
+    "play_sound_when_agent_done": "always",
     "model_parameters": [],
   },
   "audio": {
     "experimental.auto_microphone_volume": true,
-    "experimental.rodio_audio": true,
   },
   "calls": {
     "mute_on_join": true,
@@ -96,6 +103,7 @@
     "stepping_granularity": "statement",
   },
   "git_panel": {
+    "dock": "left",
     "tree_view": true,
     "collapse_untracked_diff": true,
   },
@@ -278,6 +286,7 @@
   "colorize_brackets": true,
   "icon_theme": "Seti Icon Theme",
   "project_panel": {
+    "dock": "left",
     "git_status_indicator": false,
     "diagnostic_badges": true,
     "sort_mode": "directories_first",
@@ -303,8 +312,8 @@
     "git_status": true,
   },
   "title_bar": {
+    "show_branch_status_icon": true,
     "show_menus": true,
-    "show_branch_icon": true,
   },
   "prettier": {
     "allowed": false,

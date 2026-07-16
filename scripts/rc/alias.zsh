@@ -57,7 +57,8 @@ alias ogman='\man'
 # memes
 alias fish='asciiquarium'
 alias train="sl"
-
+alias snow="snowmachine snow"
+alias snow="snowmachine tree"
 cows() {
   local msg="${1:-hello}"
   for cow in $(cowsay -l | tr ' ' '\n'); do

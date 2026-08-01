@@ -36,3 +36,4 @@ yabai -m rule --add app="^kitty$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Photos$" manage=off
+yabai -m rule --add app="^Bluestack$" manage=off

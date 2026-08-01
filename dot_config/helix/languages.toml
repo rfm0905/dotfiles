@@ -48,7 +48,7 @@ language-servers = ["ty"]
 formatter = { command = "ruff", args = [
   "format",
   "--stdin-filename",
-  "{%file}",
+  "%{buffer_name}",
   "-"
 ] }
 

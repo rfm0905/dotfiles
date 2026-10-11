@@ -189,6 +189,9 @@
     "JSON": {
       "prettier": {
         "allowed": true,
+        // Strict JSON: no trailing commas (Python's json module rejects them)
+        "parser": "json",
+        "trailingComma": "none",
       },
     },
     "JSONC": {
@@ -277,7 +280,6 @@
     "TSX": ["*.jsx", "*.tsx"],
     "OCaml": ["*.ml", "*.mli"],
     "Scala": ["*.sc", "*.scala"],
-    "JSONC": ["*.json", "*.jsonc"],
     "Markdown": ["qmd", "rmd", "md"],
   },
   "buffer_font_family": "Consolas",

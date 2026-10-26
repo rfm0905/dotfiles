@@ -65,3 +65,11 @@ cows() {
     cowsay -f "$cow" "$msg from $cow"
   done
 }
+
+wipehist() {
+  [[ -n $HISTFILE ]] || { print -u2 "HISTFILE not set"; return 1 }
+  local f=$HISTFILE
+  unset HISTFILE
+  : >| "$f"
+  exec zsh
+}

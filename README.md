@@ -1,5 +1,8 @@
 # Dotfiles
 
 - doesn't include my gpg settings
-- Obsidian sync script in [`./scripts`](./scripts) is cool
-- [Obsidian snippets](./dot_obsidian/snippets) are symlinked to icloud for me, so had to work-around
+- Obsidian sync script in [`./dot_local/bin`](./dot_local/bin) is cool (~~thanks to ai~~)
+  - `obsidian-sync.zsh` (commits on a churn threshold + daily/weekly floors)
+  - `obsidian-sync-audit.zsh` for sandboxed testing.
+  - launchd agent at [`./private_Library/LaunchAgents`](./private_Library/LaunchAgents) *template cause launchd can't read `$HOME`*
+- Obsidian css snippets moved to a private notes repo, sorry.

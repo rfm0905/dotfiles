@@ -1,10 +1,10 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [ -r "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-[ -f "/Users/raedm/.ghcup/env" ] && . "/Users/raedm/.ghcup/env"
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
 export GOPATH="$HOME/go"
 
-export PNPM_HOME="/Users/raedm/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
 *":$PNPM_HOME:"*) ;;
 *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -21,7 +21,7 @@ export PATH="$PATH:$HOME/.nimble/bin"
 export PATH="$PATH:/opt/homebrew/opt/llvm/bin"
 export PATH="$PATH:$HOME/dev/ltex-ls-16.0.0/bin"
 export PATH="$PATH:$HOME/dev/als-dev-Agda-2.8.0-macos-arm64"
-export PATH="$PATH:/Users/raedm/Library/Application Support/Coursier/bin"
+export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 
 export PATH="/Applications/MATLAB_R2025b.app/bin:$PATH" # matlab
 

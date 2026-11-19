@@ -58,7 +58,22 @@ if (( $(git rev-list --count HEAD..origin/$BRANCH 2>/dev/null || echo 0) > 0 ));
     for f in ${(f)"$(git diff --name-only --diff-filter=A HEAD..origin/$BRANCH 2>/dev/null)"}; do
         [[ -n "$f" && -e "$f" ]] || continue
         git ls-files --error-unmatch -- "$f" >/dev/null 2>&1 && continue
-        mv -- "$f" "${f%.md}.local-$(date +%Y%m%d%H%M%S).md" 2>/dev/null \
+        # The common case: the 7:20 AM cloud brief creates today's journal and
+        # pushes it, while Obsidian has already made a local, untouched
+        # template copy (untracked, by the journal content gate). Moving that
+        # aside would leave a duplicate empty note with the same ID beside the
+        # real one every morning. A pristine template clone holds nothing, so
+        # let the incoming copy replace it.
+        if [[ "$f" == Journals/*.md && -f "$TEMPLATE" ]] \
+           && cmp -s <(tail -n +8 "$TEMPLATE") <(tail -n +8 "$f"); then
+            rm -f -- "$f" \
+                && echo "$(date): replaced untouched local template $f with incoming remote copy"
+            continue
+        fi
+        # Keep the real extension: "img.png" -> "img.local-<stamp>.png", not
+        # "img.png.local-<stamp>.md" (which Obsidian would then open as a note).
+        ext=${f:e}
+        mv -- "$f" "${f:r}.local-$(date +%Y%m%d%H%M%S)${ext:+.$ext}" 2>/dev/null \
             && echo "$(date): moved untracked $f aside for incoming remote copy"
     done
     if ! git -c rebase.autoStash=true pull --rebase origin "$BRANCH"; then
@@ -67,6 +82,16 @@ if (( $(git rev-list --count HEAD..origin/$BRANCH 2>/dev/null || echo 0) > 0 ));
         exit 1
     fi
     echo "$(date): pulled remote changes"
+fi
+
+# A commit whose push failed last time (offline, GitHub hiccup) would otherwise
+# sit unpushed until the NEXT commit happens, which can be days on a quiet
+# vault, because every hold / "nothing changed" path exits before the push.
+# Flushing it here, before any gate, retries on every poll.
+UNPUSHED=$(git rev-list --count origin/$BRANCH..HEAD 2>/dev/null || echo 0)
+if (( UNPUSHED > 0 )); then
+    git push -q origin "$BRANCH" \
+        && echo "$(date): pushed ${UNPUSHED} earlier unpushed commit(s)"
 fi
 
 # --- is the weekly plugins+journals sweep due? ---------------------------
@@ -248,9 +273,17 @@ else
     SUBJECT="Sync: $STAMP${WHAT:+ — $WHAT}"
 fi
 
-git commit -q -m "$SUBJECT" \
-              -m "$(git diff --cached --name-status)" \
-              -m "[$REASON]"
+# Commits are GPG-signed (global commit.gpgsign). If signing ever fails under
+# launchd — Keychain locked, gpg-agent wedged, pinentry missing — git commit
+# fails, and without this check the script would carry on, push nothing, and
+# still log "pushed", hiding the outage indefinitely.
+if ! git commit -q -m "$SUBJECT" \
+                -m "$(git diff --cached --name-status)" \
+                -m "[$REASON]"; then
+    git reset -q
+    echo "$(date): COMMIT FAILED (gpg signing?) — nothing committed or pushed"
+    exit 1
+fi
 
 # autoStash is required now, not optional: on the normal path plugins and
 # Journals are left uncommitted by design, so the working tree is ALWAYS dirty

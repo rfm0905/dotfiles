@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.raedm.todoist-plugin-patch</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>/Users/raedm/.local/bin/todoist-plugin-patch.zsh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+        <string>/Users/raedm/ObsidianNotes/.obsidian/plugins/todoist-sync-plugin/manifest.json</string>
+        <string>/Users/raedm/ObsidianNotes/.obsidian/plugins/todoist-sync-plugin/main.js</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>21600</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/raedm/.local/var/log/todoist-plugin-patch.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/raedm/.local/var/log/todoist-plugin-patch.log</string>
+</dict>
+</plist>

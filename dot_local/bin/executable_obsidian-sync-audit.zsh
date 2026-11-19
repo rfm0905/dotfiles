@@ -6,7 +6,7 @@
 # Each case prints EXPECT and GOT so a mismatch is obvious without reading code.
 set -uo pipefail
 
-ROOT=/tmp/obsidian-audit
+ROOT=${OBSIDIAN_AUDIT_ROOT:-/tmp/obsidian-audit}
 SCRIPT=$HOME/.local/bin/obsidian-sync.zsh
 TEMPLATE=$HOME/ObsidianNotes/xTemplates/daily.md
 
@@ -127,7 +127,9 @@ cp xTemplates/daily.md Journals/2026-11/11-19-2026.md
 quiet; run; state
 
 case_ "14. iCloud duplicate warning" "WARN naming 'visuals/img 2.png'"
-echo dup > visuals/img.png; git add -A; git commit -q -m "base img"; git push -q origin main
+# Stage ONLY the base image: `git add -A` here would also sweep in case 13's
+# empty journal and make it look like the content gate let it through.
+echo dup > visuals/img.png; git add visuals/img.png; git commit -q -m "base img"; git push -q origin main
 cp visuals/img.png "visuals/img 2.png"
 for i in {1..40}; do echo "l $i" >> Notes/trigger.md; done
 quiet; run; state
@@ -142,7 +144,40 @@ git -c rebase.autoStash=true pull --rebase origin main >/dev/null 2>&1 \
   && print -r -- "    GOT   : with autoStash OK" \
   || print -r -- "    GOT   : *** autoStash ALSO FAILED ***"
 
-print -r -- "=== 16. final state"
+case_ "16. commit left unpushed by a failed push" "pushed 1 earlier unpushed commit(s), even with nothing new"
+echo "orphan" > Notes/unpushed.md; git add Notes/unpushed.md; git commit -q -m "unpushed"
+quiet; run
+print -r -- "    GOT   : origin/main == HEAD? $( [[ $(git rev-parse origin/main) == $(git rev-parse HEAD) ]] && echo yes || echo NO )"
+
+case_ "17. git commit fails (stand-in for gpg signing failure)" "COMMIT FAILED logged, no 'pushed', index reset"
+mkdir -p .git/hooks; printf '#!/bin/sh\nexit 1\n' > .git/hooks/pre-commit; chmod +x .git/hooks/pre-commit
+for i in {1..40}; do echo "l $i" >> Notes/fail.md; done
+quiet; run
+print -r -- "    GOT   : staged after failure = $(git diff --cached --name-only | wc -l | tr -d ' ')  (want 0)"
+mv .git/hooks/pre-commit .git/hooks/pre-commit.off
+
+# Stand-in for the cloud routines: a second clone that pushes a journal.
+remote_push_journal() {
+  local p=$1
+  rm -rf $ROOT/cloud; git clone -q $ROOT/origin.git $ROOT/cloud
+  ( cd $ROOT/cloud && git config user.email c@d.e && git config user.name cloud \
+    && mkdir -p ${p:h} && cp xTemplates/daily.md $p && echo "## Daily news brief" >> $p \
+    && git add $p && git commit -q --no-gpg-sign -m "daily news brief" && git push -q origin main )
+}
+
+case_ "18. cloud brief pushes today's journal; local copy is an untouched template" "template replaced, no .local duplicate"
+cp xTemplates/daily.md Journals/2026-11/11-20-2026.md
+remote_push_journal Journals/2026-11/11-20-2026.md
+quiet; run
+print -r -- "    GOT   : .local files = $(ls Journals/2026-11 | grep -c local)  (want 0); brief in note = $(grep -c 'Daily news brief' Journals/2026-11/11-20-2026.md)"
+
+case_ "19. same, but local copy has real writing" "moved aside keeping .md, incoming copy lands"
+cp xTemplates/daily.md Journals/2026-11/11-21-2026.md; echo "my own words" >> Journals/2026-11/11-21-2026.md
+remote_push_journal Journals/2026-11/11-21-2026.md
+quiet; run
+print -r -- "    GOT   : aside = $(ls Journals/2026-11 | grep local)"
+
+print -r -- "=== 20. final state"
 print -r -- "    commits: $(git rev-list --count HEAD)"
 print -r -- "    pushed:  $(git rev-parse --short origin/main) == $(git rev-parse --short HEAD)"
 print -r -- "    log:"

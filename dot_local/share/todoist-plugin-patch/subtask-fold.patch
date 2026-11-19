@@ -1,0 +1,84 @@
+diff --git a/plugin/src/data/index.ts b/plugin/src/data/index.ts
+index 638fdc4..72ddd7d 100644
+--- a/plugin/src/data/index.ts
++++ b/plugin/src/data/index.ts
+@@ -145,7 +145,7 @@ export class TodoistAdapter {
+       ? (this.sections.byId(apiTask.sectionId) ?? makeUnknownSection(apiTask.sectionId))
+       : undefined;
+ 
+-    const labels = apiTask.labels.map((id) => this.labels.byName(id) ?? makeUnknownLabel());
++    const labels = apiTask.labels.map((id) => this.labels.byName(id) ?? makeUnknownLabel(id));
+ 
+     return {
+       id: apiTask.id,
+@@ -218,10 +218,12 @@ const makeUnknownSection = (id: string): Section => {
+   };
+ };
+ 
+-const makeUnknownLabel = (): Label => {
++// shared labels (e.g. added by integrations) aren't in the personal label
++// list, but the task already carries the name, so show it instead of a placeholder
++const makeUnknownLabel = (name: string): Label => {
+   return {
+     id: "unknown-label",
+-    name: "Unknown Label",
++    name,
+     color: "grey",
+     isDeleted: false,
+   };
+diff --git a/plugin/src/ui/query/task/Task.tsx b/plugin/src/ui/query/task/Task.tsx
+index 2b508e4..edb62db 100644
+--- a/plugin/src/ui/query/task/Task.tsx
++++ b/plugin/src/ui/query/task/Task.tsx
+@@ -8,6 +8,7 @@ import type { TaskTree } from "@/data/transformations/relationships";
+ import { t } from "@/i18n";
+ import { useSettingsStore } from "@/settings";
+ import { Markdown } from "@/ui/components/markdown";
++import { ObsidianIcon } from "@/ui/components/obsidian-icon";
+ import { PluginContext, QueryContext } from "@/ui/context";
+ import { showTaskContext } from "@/ui/query/task/contextMenu";
+ import { TaskList } from "@/ui/query/task/TaskList";
+@@ -23,6 +24,8 @@ export const Task: React.FC<Props> = ({ tree }) => {
+   const plugin = PluginContext.use();
+   const query = QueryContext.use();
+   const settings = useSettingsStore();
++  const [isCollapsed, setIsCollapsed] = React.useState(true);
++  const hasChildren = tree.children.length > 0;
+ 
+   const onContextMenu = (ev: MouseEvent) => {
+     ev.preventDefault();
+@@ -73,6 +76,14 @@ export const Task: React.FC<Props> = ({ tree }) => {
+           duration: 0.4,
+         }}
+       >
++        {hasChildren && (
++          <ObsidianIcon
++            size="s"
++            id={isCollapsed ? "chevron-right" : "chevron-down"}
++            className="todoist-subtask-toggle"
++            onClick={() => setIsCollapsed(!isCollapsed)}
++          />
++        )}
+         <Checkbox
+           className="todoist-task-checkbox"
+           isDisabled={isDisabled}
+@@ -91,7 +102,7 @@ export const Task: React.FC<Props> = ({ tree }) => {
+           <TaskMetadata query={query} task={tree} settings={settings} />
+         </div>
+       </motion.div>
+-      {tree.children.length > 0 && <TaskList trees={tree.children} />}
++      {hasChildren && !isCollapsed && <TaskList trees={tree.children} />}
+     </>
+   );
+ };
+@@ -142,8 +153,8 @@ const DescriptionRenderer: React.FC<DescriptionRendererProps> = ({ content }) =>
+   const isComplex =
+     content.includes("\n") ||
+     content.startsWith("#") ||
+-    content.startsWith("*") ||
+-    content.startsWith("-") ||
++    content.startsWith("* ") ||
++    content.startsWith("- ") ||
+     content.startsWith("1.");
+ 
+   const toggleExpanded = () => {

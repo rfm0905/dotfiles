@@ -92,10 +92,20 @@ WEEKLY=0
 # Most recent mtime across AUTHORED files only. Plugin dirs are excluded or the
 # vault would never look quiet — they rewrite data.json every few minutes, which
 # would block every commit forever.
-ACTIVE=$(find . -type f \
+# Gitignored files are skipped: they can never trigger a commit, so letting one
+# block a commit is backwards. .DS_Store is the case that bit — macOS rewrites
+# it whenever a Finder window changes, it lives inside xTemplates/ and Journals/,
+# and it held the gate open indefinitely while nothing committable had changed.
+ACTIVE=""
+while IFS= read -r f; do
+    [[ -n "$f" ]] || continue
+    git check-ignore -q -- "$f" && continue
+    ACTIVE="$f"
+    break
+done < <(find . -type f \
          \( -name '*.md' -o -path './.obsidian/snippets/*' -o -path './xTemplates/*' \) \
          -not -path './.git/*' -not -path './.obsidian/plugins/*' \
-         -mmin -${QUIET_MIN} -print -quit 2>/dev/null)
+         -mmin -${QUIET_MIN} -print 2>/dev/null)
 
 if [[ -n "$ACTIVE" ]]; then
     # The sweep may not starve: if someone edits something every 29 minutes for

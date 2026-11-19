@@ -31,7 +31,7 @@ THRESHOLD=30            # authored lines that justify an immediate commit
 QUIET_MIN=30            # minutes of no authored edits required before committing
 DAY=$(( 24 * 3600 ))
 WEEK=$(( 7 * 24 * 3600 ))
-WSUBJ="Weekly Sync Plugins and Journals"
+WSUBJ="Automated Weekly Sync: Plugins and Journals"
 
 cd "$VAULT" || exit 1
 BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null) || BRANCH=main
@@ -270,7 +270,7 @@ else
     fi
     (( $#BUCKETS )) && PARTS+=( "${(j:, :)BUCKETS}" )
     WHAT=${(j:, :)PARTS}
-    SUBJECT="Sync: $STAMP${WHAT:+ — $WHAT}"
+    SUBJECT="Automated Sync: $STAMP${WHAT:+ — $WHAT}"
 fi
 
 # Commits are GPG-signed (global commit.gpgsign). If signing ever fails under

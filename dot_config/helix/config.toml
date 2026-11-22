@@ -8,6 +8,7 @@ trim-final-newlines = true
 mouse = true
 completion-replace = true
 cursorline = true
+trim-trailing-whitespace = true
 
 [editor.lsp]
 display-inlay-hints = true
@@ -21,6 +22,9 @@ skip-levels = 0
 
 [editor.auto-save]
 focus-lost = true
+
+[editor.search]
+wrap-around = true
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
@@ -44,8 +48,8 @@ hidden = false
 "o" = "add_newline_below"
 "O" = "add_newline_above"
 
-"C-l" = "goto_line_end"
-"C-h" = "goto_line_start"
+"A-t" = "goto_line_end"
+"A-l" = "goto_line_start"
 
 "A-y" = "select_register"
 "A-q" = "select_register" # for macros
@@ -60,11 +64,14 @@ hidden = false
 "C-c" = "toggle_comments"
 "C-C" = "toggle_line_comments"
 
+"d" = "delete_selection_noyank"
+"c"= "change_selection_noyank"
+
 # Cursors
 "C-," = "copy_selection_on_next_line" # cursor below
 "C-A-," = "copy_selection_on_prev_line"
-"J" = "join_selections_space" # multiple selections at the line breaks
-"A-J" = "join_selections" # one selection at the end of the line
+"J" = "join_selections_space" # joins selections, selections go to the spaces between the og lines
+"A-J" = "join_selections" # joins selections, selections go to the start of each og line
 "A-m" = "merge_selections"
 "A-M" = "merge_consecutive_selections"
 
@@ -87,6 +94,8 @@ hidden = false
 "Cmd-z" = "undo"
 "Cmd-y" = "redo"
 
+"d" = "delete_selection_noyank"
+"c"= "change_selection_noyank"
 
 [keys.normal."]"]
 "o" = "open_below"
@@ -97,9 +106,9 @@ hidden = false
 [keys.insert]
 "S-backspace" = "delete_word_backward"
 "A-backspace" = "delete_word_forward"
-"C-w" = "delete_word_backward"
-"C-W" = "delete_word_forward"
-"C-l" = "kill_to_line_end"
+"C-b" = "delete_word_backward"
+"C-w" = "delete_word_forward"
+"C-t" = "kill_to_line_end"
 "C-h" = "kill_to_line_start"
 
 "A-+" = "increment"

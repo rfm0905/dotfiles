@@ -6,6 +6,7 @@ alias ..="z .."
 
 # gpg
 alias getpass="keepassxc-cli clip ~/Passwords.kdbx"
+alias getuser="keepassxc-cli clip ~/Passwords.kdbx -a username"
 alias getykw="getpass ykw"
 alias getgit="getpass rfm0905"
 alias gpgd="pbpaste | gpg -d"
@@ -18,7 +19,7 @@ zedit() {
   z "${1:-.}"
   zed "${2:-.}"
 }
-tedit() {
+helix() {
   z "${1:-.}"
   hx "${2:-.}"
 }
@@ -33,10 +34,11 @@ alias ls="lsd"
 alias ogls="\ls"
 alias htop='btop'
 alias oghtop='\htop'
-alias cat='bat --paging=never'
-alias ogcat='\cat'
+alias cat='bat -P' # no paging
+# so tempted to write in alias bat='cat'
+alias ogcat='bat -pp' 
 alias dumbcat='\cat'
-alias pipeit='\cat'
+alias pipeit='\cat' 
 
 # files
 alias lsl="lsd -l"

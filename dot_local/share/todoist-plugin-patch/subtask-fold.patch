@@ -1,3 +1,8 @@
+todoist-patch-rev: 3
+Rev 3: subtasks start folded; section groups keep the stock behaviour (start open).
+Bump the rev whenever this patch changes; todoist-plugin-patch.zsh rebuilds any
+install stamped with an older rev.
+
 diff --git a/plugin/src/data/index.ts b/plugin/src/data/index.ts
 index 638fdc4..72ddd7d 100644
 --- a/plugin/src/data/index.ts

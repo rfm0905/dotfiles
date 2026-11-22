@@ -1,0 +1,67 @@
+/* ================================
+   DAILY NOTE TITLE — LEFT ALIGNED
+   ================================ */
+
+/* Typography */
+.daily-note-view .daily-note-title,
+.daily-note-view .daily-note-title .clickable-link {
+  font-size: 1.6em !important;
+  font-weight: 600 !important;
+  font-family: "Futura" !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.daily-note-view .daily-note-title,
+.daily-note-view .daily-note-title .clickable-link {
+  color: #88c0d0 !important; /* Nord Frost */
+  opacity: 1;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Layout: real left alignment, no padding hacks */
+.daily-note-view .daily-note-title {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+
+  width: var(--file-line-width) !important;
+  max-width: var(--file-line-width) !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  padding: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Date text itself */
+.daily-note-view .daily-note-title .clickable-link {
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+/* Remove divider lines entirely */
+.daily-note-view .daily-note-wrapper::before {
+  display: none !important;
+}
+
+/* Prevent collapse button from shifting layout */
+.daily-note-view .collapse-button {
+  position: absolute !important;
+  left: 1rem;
+}
+
+/* Keep collapse button aligned with title (prevent off-screen clipping) */
+.daily-note-view .daily-note-title .collapse-button {
+  margin-left: 0 !important; /* cancels the plugin’s negative margin */
+  position: static !important; /* inline with flex row */
+  flex: 0 0 24px !important; /* don’t let it shrink weirdly */
+}
+
+/* Optional: if anything still clips on very tight layouts */
+.daily-note-view .daily-note-title {
+  overflow: visible !important;
+}

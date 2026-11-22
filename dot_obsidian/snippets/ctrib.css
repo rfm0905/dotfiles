@@ -1,0 +1,27 @@
+.contribution-graph .main .title {
+	font-size: 20px !important;
+	font-weight: bold !important;
+	justify-content: flex-start !important;
+	text-align: center !important;
+	font-family: "Geologica" !important;
+}
+.contribution-graph .default .month-indicator {
+  font-size: 15px !important;
+  font-style: italic !important;
+  font-family: "TASA Orbiter" !important;
+}
+
+.contribution-graph .default .week-indicator {
+  font-size: 13px !important;
+  font-style: italic !important;
+  font-family: "TASA Orbiter" !important;
+}
+
+.contribution-graph .main {
+  align-content: center !important;
+}
+
+.contribution-graph .main .title {
+  margin-bottom: 8px !important; /* was 36px */
+  margin-top: 8px !important; 
+}

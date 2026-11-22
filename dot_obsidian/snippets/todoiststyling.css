@@ -1,0 +1,116 @@
+/* ── Card ── */
+.block-language-todoist {
+  padding: 18px 20px !important;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0.5px 1px #ffffff13,
+    0 0 0 1px #0000000d,
+    0 0.3px 0.4px #00000005,
+    0 0.9px 1.5px #0000000b,
+    0 3.5px 6px #00000017;
+  overflow: hidden; /* keeps the shadow clean at the rounded corners */
+}
+
+/* ── Headers ── */
+.todoist-query-header .todoist-query-title {
+  font-size: 1.6em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: "Geologica" !important;
+  line-height: 1.15 !important;
+}
+
+.block-language-todoist .todoist-query-header {
+  margin-bottom: 0.75em !important;
+  color: var(--text-muted);
+}
+
+.todoist-group-title {
+  font-weight: 580 !important;
+  font-size: 1em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: "Geologica" !important;
+  line-height: 1.15 !important;
+}
+
+.block-language-todoist .todoist-group-title {
+  margin: 0.9em 0 0.35em 0 !important;
+  color: var(--text-muted);
+  gap: 0.25em !important; /* chevron sits closer to the title (plugin default 0.5em) */
+}
+
+.block-language-todoist .todoist-group:first-child .todoist-group-title {
+  margin-top: 0.25em !important;
+}
+
+.todoist-group-title.collapsed {
+  border-bottom-width: 0px !important;
+}
+
+/* ── Empty state ── */
+.todoist-no-tasks {
+  font-family: "Geologica" !important;
+  --todoist-callout-color: rgba(255, 90, 90, 0.15) !important;
+  border-left: 4px solid rgba(255, 90, 90, 0.6);
+}
+
+.todoist-callout .callout-header .obsidian-icon {
+  display: none;
+}
+
+/* ── Lists ── */
+.block-language-todoist .todoist-tasks-list {
+  margin-top: 0.75em !important;
+}
+
+.block-language-todoist .todoist-tasks-list .todoist-tasks-list {
+  margin-top: 0.25em !important;
+  margin-left: 1.25em !important;
+}
+
+/* ── Task rows ── */
+.block-language-todoist .todoist-task-container {
+  position: relative; /* anchor for the subtask chevron */
+  padding: 0.45em 0.25em !important;
+  border-radius: 10px;
+  border-bottom-width: 0px !important;
+  font-family: "Geologica" !important;
+  font-weight: 300 !important;
+}
+
+.block-language-todoist .todoist-task-container:first-child {
+  border-top-width: 0px !important;
+}
+
+.block-language-todoist .todoist-task-container:hover {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* checkbox: center it on the title's first line (the plugin's fixed 3px only
+   fits the default font size). 1lh = one line of text; box is 16px tall. */
+.block-language-todoist .todoist-task-container .todoist-task-checkbox {
+  margin-top: calc(0.5lh - 8px) !important;
+}
+
+/* ── Subtask fold toggle (from the patched plugin build) ──
+   The chevron hangs in the left gutter, like Obsidian's own fold arrows,
+   so it takes no space in the row: nothing shifts, every group lines up. */
+.block-language-todoist .todoist-subtask-toggle {
+  position: absolute;
+  left: -16px;
+  top: calc(0.45em + 0.5lh - 8px); /* row's top padding + same centering as the checkbox */
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--text-faint);
+}
+
+.block-language-todoist .todoist-subtask-toggle:hover {
+  color: var(--text-normal);
+  background-color: var(--interactive-hover);
+}

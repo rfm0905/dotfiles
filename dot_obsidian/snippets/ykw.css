@@ -1,0 +1,156 @@
+.ykw-box{
+  border-top: 1px solid var(--divider-color);
+  border-bottom: 1px solid var(--divider-color);
+  padding: .75em 0; /* Increased padding for better spacing */
+  margin: 1.5em 0;
+}
+
+.ykw-container{
+  display:flex;
+  align-items:center;
+  justify-items:start;
+  gap: 0.1em;
+}
+
+/* Icon column: no % width (that creates dead space) */
+.ykw-icon{
+  flex: 0 0 auto;
+  display:flex;
+  align-items:center;
+}
+
+/* Make the flame BIG, and optically centered */
+.ykw-icon svg{
+  height: 4.6em;      /* adjust: 4.2em–5.2em */
+  width: auto;
+  display:block;
+
+  /* optical correction because the path is top-heavy in the viewBox */
+  transform: translateY(15%);
+}
+/* Small label */
+.ykw-label {
+  font-size: 0.85em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.4em;
+}
+
+/* Big number */
+.ykw-value {
+  font-size: 2.3em;
+  font-weight: 600;
+  color: var(--text-normal);
+  line-height: 1.1; /* Tighter line height for better vertical centering */
+  font-family: Geologica; 
+}
+
+/* ── Daily reminder (dua / hadith) under the YKW box: same divider language ── */
+.daily-reminder {
+  padding: 0.25em 0 1.25em;
+  margin: 0 0 1.5em;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.daily-reminder-label {
+  font-family: Geologica;
+  font-size: 0.75em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.9em;
+}
+
+.daily-reminder-label a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.daily-reminder-label a:hover {
+  text-decoration: underline;
+}
+
+.daily-reminder-ar {
+  font-family: "me_quran", "Amiri Quran", "Geeza Pro", serif;
+  font-size: 1.55em;
+  line-height: 2.1;
+  direction: rtl;
+  text-align: right;
+  color: var(--text-normal);
+  margin: 0 0 0.6em;
+}
+
+.daily-reminder-en {
+  font-family: Geologica;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* long hadith: show 5 lines until expanded */
+.daily-reminder-en.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.daily-reminder button.daily-reminder-more {
+  all: unset;
+  background: none !important;
+  box-shadow: none !important;
+  margin-top: 0.5em;
+  font-family: Geologica;
+  font-size: 0.8em;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+
+.daily-reminder button.daily-reminder-more:hover {
+  color: var(--text-normal);
+}
+
+/* when/why a Hisn al-Muslim dua is said */
+.daily-reminder-context {
+  font-family: Geologica;
+  font-size: 0.85em;
+  font-style: italic;
+  color: var(--text-faint);
+  margin: -0.4em 0 0.8em;
+}
+
+/* transliteration between the Arabic and the translation */
+.daily-reminder-tr {
+  font-family: Geologica;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-normal);
+  opacity: 0.8;
+  margin: 0 0 0.6em;
+}
+
+/* footer: Read more (left) + source link (right) */
+.daily-reminder-footer {
+  display: flex;
+  align-items: center;
+  margin-top: 0.6em;
+}
+
+.daily-reminder-footer button.daily-reminder-more {
+  margin-top: 0;
+}
+
+.daily-reminder-source {
+  margin-left: auto;
+  font-family: Geologica;
+  font-size: 0.8em;
+  color: var(--text-faint) !important;
+  text-decoration: none !important;
+}
+
+.daily-reminder-source:hover {
+  color: var(--text-normal) !important;
+}

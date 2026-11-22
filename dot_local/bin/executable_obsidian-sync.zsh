@@ -277,7 +277,14 @@ fi
 # launchd — Keychain locked, gpg-agent wedged, pinentry missing — git commit
 # fails, and without this check the script would carry on, push nothing, and
 # still log "pushed", hiding the outage indefinitely.
-if ! git commit -q -m "$SUBJECT" \
+#
+# Authored by syncbot so GitHub shows these as the daemon's, not Raed's: the
+# address is linked to no GitHub account, so GitHub prints the plain name. The
+# committer stays Raed and the signature is his key, which is what GitHub
+# verifies, so the commits still show Verified ("syncbot authored and rfm0905
+# committed"). The pull --rebase below keeps the author.
+if ! GIT_AUTHOR_NAME=syncbot GIT_AUTHOR_EMAIL=syncbot@daemon.local \
+     git commit -q -m "$SUBJECT" \
                 -m "$(git diff --cached --name-status)" \
                 -m "[$REASON]"; then
     git reset -q
